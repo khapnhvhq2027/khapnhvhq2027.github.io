@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phòng Bánh Sinh Nhật 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('images/birthday-table.jpg'); /* Thay bằng ảnh bàn tiệc thật */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+    .intro-text {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #d6336c;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 90%;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+    .gift {
+  position: absolute;
+  bottom: 20%;
+  left: 2cm; /* cách mép trái 2cm */
+  font-size: 150px; /* tăng kích thước hộp quà */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+
+    .gift:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    .letter-popup, .cake-stage {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 182, 193, 0.95);
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      display: none;
+    }
+
+    .letter-popup button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #d6336c;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cake {
+      font-size: 120px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .cake:hover {
+      transform: scale(1.1);
+    }
+
+    #wish-text {
+  position: absolute;
+  top: 6cm;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #e75480; /* 🌸 màu hồng đẹp */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+#fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* để không làm mất tương tác người dùng */
+  z-index: 9999;
+}
+.firework {
+  position: absolute;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background: yellow;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+    <div class="intro-text">
+        Ú òa bất ngờ chưa? Một bữa tiệc sinh nhật tuyệt vời. <br>
+        Hãy nhận lấy món quà của mình ở bên trái màn hình bạn nhé 🎁
+      </div>
+  <!-- Hộp quà 🎁 -->
+  <div class="gift" onclick="showLetter()">🎁</div>
+
+  <!-- Popup thư -->
+<div class="letter-popup" id="letter">
+    <img src="images/letter.png" alt="Thư sinh nhật" style="max-width: 100%; border-radius: 12px;" />
+    <button onclick="showCake()">🎂 Cùng thổi nến nào</button>
+  </div>
+  
+
+  <!-- Bánh sinh nhật 🎂 -->
+  <div class="cake-stage" id="cakeStage">
+    <div class="cake" onclick="blowCandle()" id="cake">🎂</div>
+    <p>Bấm vào bánh để thổi nến nhé!</p>
+  </div>
+  
+  <audio id="candle-audio" src="sounds/candle.mp3"></audio>
+  <audio id="candle-audio" src="sounds/candle.mp3" preload="auto"></audio>
+ 
+  <div id="wish-text" class="wish-message">
+    Ước nguyện đã được gửi đi. Bạn thấy sao hãy chia sẻ ngay cho tôi biết nhé
+  </div>
+  <div id="fireworks-container"></div>
+
+  
+
+  <script>
+    function showLetter() {
+      document.querySelector('.gift').style.display = 'none';
+      document.getElementById('letter').style.display = 'block';
+    }
+  
+    function showCake() {
+  document.getElementById('letter').style.display = 'none';
+  document.getElementById('cakeStage').style.display = 'block';
+  
+  // Phát nhạc
+  const audio = document.getElementById('candle-audio');
+  audio.currentTime = 0;
+  audio.play().catch((e) => {
+    console.log("Không thể phát nhạc: ", e);
+  });
+}
+function blowCandle() {
+  document.getElementById('cake').textContent = '🍰';
+  document.getElementById('wish-text').style.display = 'block';
+  launchFireworks(); // pháo hoa lần đầu
+  startFireworksLoop(); // lặp pháo hoa liên tục
+}
+
+
+function launchFireworks() {
+  const container = document.getElementById('fireworks-container');
+  for (let i = 0; i < 20; i++) {
+    const fw = document.createElement('div');
+    fw.className = 'firework';
+    fw.style.left = Math.random() * window.innerWidth + 'px';
+    fw.style.top = Math.random() * window.innerHeight + 'px';
+
+    // Tạo hiệu ứng bay ra
+    fw.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
+    fw.style.setProperty('--y', `${(Math.random() - 0.5) * 200}px`);
+
+    container.appendChild(fw);
+    setTimeout(() => container.removeChild(fw), 1000);
+  }
+}
+function startFireworksLoop() {
+  setInterval(() => {
+    launchFireworks();
+  }, 100); // lặp mỗi 2 giây
+}
+
+
+  </script>  
+</body>
+</html>

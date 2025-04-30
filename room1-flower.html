@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Phòng Hoa</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('images/flower-room.jpg'); /* bạn có thể dùng hình bạn muốn */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .gift {
+      font-size: 150px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gift:hover {
+      transform: scale(1.1);
+    }
+
+    .letter {
+      display: none;
+      margin-top: 40px;
+      background: rgba(255, 182, 193, 0.85); /* màu hồng nhạt (LightPink) */
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ffb6c1;
+      color: #000;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 1.1em;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .back-btn:hover {
+      background-color: #ffa5b0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌸 Chào mừng đến với Phòng Hoa 🌸</h1>
+  <p>Ấn vào món quà giữa những bông hoa để mở điều bất ngờ nhé!</p>
+
+  <div>
+    <span class="gift" onclick="showLetter()">🎁</span>
+  </div>
+
+  <div class="letter" id="letter">
+    <h2>Gửi bạn thân yêu 💌</h2>
+    <p>
+      Bất ngờ chưa nhỉ?   
+      Bạn tôi thấy hoa có đẹp không ? Những bông hoa này cũng đẹp thế nhưng vẫn chưa  
+      là gì so với nụ cười của bạn đâu. vì vậy hãy cười thật nhiều lên nhé ! 🌷🌼🌹  
+    </p>
+  </div>
+
+  <a href="index.html" class="back-btn">← Quay lại</a>
+
+  <script>
+    function showLetter() {
+      document.getElementById('letter').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

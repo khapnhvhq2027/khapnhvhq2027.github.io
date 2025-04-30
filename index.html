@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chọn một cánh cửa 🎁</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="narrator-box">
+        <img src="images/bo-doi.png" alt="Người dẫn chuyện bộ đội" class="narrator-img" />
+        <div class="narrator-text">
+          <h1>Chào mừng đến với trò chơi sinh nhật! 🥳</h1>
+          <p>Tớ là người lính trẻ dẫn đường nè! Nhớ bật âm lên để tận hưởng được trọn vẹn bạn yêu nhé. 
+            Giờ thì hãy chọn một cánh cửa theo thứ tự từ trái qua phải để khám phá điều bất ngờ bên trong nhé!</p>
+        </div>
+      </div>
+      
+  <div class="door-container">
+    <a href="room1-flower.html" class="door">🚪</a>
+    <a href="room2-photos.html" class="door">🚪</a>
+    <a href="room3-cake.html" class="door">🚪</a>
+  </div>
+
+  <button id="music-toggle">🔇 </button>
+
+<audio id="bg-music" loop>
+  <source src="sounds/bg.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById('bg-music');
+  const toggleBtn = document.getElementById('music-toggle');
+
+  let isPlaying = false;
+
+  toggleBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      music.pause();
+      toggleBtn.textContent = '🔇';
+    } else {
+      music.play();
+      toggleBtn.textContent = '🔊';
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+
+
+</body>
+</html>

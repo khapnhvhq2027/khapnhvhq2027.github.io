@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Phòng Ảnh Kỷ Niệm</title>
+  <style>
+    
+    body {
+  background-image: url('images/photo-room-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2em;
+    }
+
+    h1 {
+  color: white;
+}
+
+    .gallery {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .photo-box {
+      width: 300px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .photo-box img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Lá thư góc phải */
+    .letter-icon {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      font-size: 60px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      z-index: 10;
+    }
+
+    .letter-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Popup thư */
+    .letter-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 182, 193, 0.95); /* hồng nhạt */
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      width: 70%;
+      max-width: 600px;
+      text-align: center;
+      color: #fff;
+      display: none;
+      z-index: 100;
+    }
+
+    .letter-popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #d6336c;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .music-emoji {
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.music-emoji:hover {
+  transform: scale(1.2);
+}
+
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Quay lại</a>
+  <h1>                  📸 Những khoảnh khắc đáng nhớ
+    <br> Cùng xem lại và khám phá bức thư bên góc phải màn hình nhé! 📩
+  </h1>
+
+  <div class="gallery">
+    <div class="photo-box">
+      <img src="images/photo2.jpg" alt="Ảnh 1">
+      <div class="caption"> Sinh nhựt zui zẻ 🥳 </div>
+    </div>
+    <div class="photo-box">
+      <img src="images/photo1.jpg" alt="Ảnh 2">
+      <div class="caption">Bức ảnh dìm hiếm hoi 🤣 </div>
+    </div>
+    <div class="photo-box">
+      <img src="images/photo3.jpg" alt="Ảnh 3">
+      <div class="caption">Bức ảnh này chắc đáng nhớ lém 🙂‍↕️ </div>
+    </div>
+  </div>
+
+  <!-- Emoji thư góc phải -->
+  <div class="letter-icon" onclick="showLetter()">
+    📩
+  </div>
+
+  <div class="letter-popup" id="letter">
+    <h2>Gửi người bạn tuyệt vời 📷</h2>
+    <p>
+      Không biết do bạn ăn ở hiền lành hay sao mà kiếm ảnh dìm khó quá 😁.<br>
+      Chăm chỉ chụp ảnh, tự tin hơn để năm sau có nhiều ảnh hơn nhóe 💫.<br>
+      Đây là món quà tôi đặc biệt chuẩn bị nên hãy nghe bằng cả trái tim nhé.<br>
+      <span class="music-emoji" onclick="playSurprise()">🎧</span> Hãy bấm vào đây và nghe thử nhé!
+    </p>
+    <button onclick="goHome()">Đến với cánh cửa cuối cùng nào</button>
+  </div>
+  
+  <!-- Thêm thẻ audio ẩn -->
+  <audio id="surprise-audio" src="\sounds\surprise.mp3"></audio>
+  
+  <script>
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+  
+    function playSurprise() {
+      const audio = document.getElementById('surprise-audio');
+      audio.play();
+    }
+  </script>
+  
+  <script>
+    function showLetter() {
+      document.getElementById('letter').style.display = 'block';
+    }
+
+    function closeLetter() {
+      document.getElementById('letter').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    color: #333;
+    padding: 40px;
+  
+    /* Thêm ảnh nền */
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    /* Cho phần tử có chiều cao toàn màn hình */
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  
+  .narrator-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background-color: #fff0f5;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .narrator-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  .narrator-text {
+    text-align: left;
+  }
+  
+  .narrator-text h1 {
+    margin: 0 0 10px;
+    font-size: 1.8em;
+  }
+  
+  .narrator-text p {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  
+  .door-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 110px;
+    position: absolute;
+    bottom: 4cm; /* cách mép dưới 4cm */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+  
+  .door {
+    font-size: 240px; /* trước là 60px → 60px x 4 = 240px */
+    text-decoration: none;
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+  
+  .door:hover {
+    transform: scale(1.1);
+  }
+
+  #music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    z-index: 999;
+  }
+  
+  #music-toggle:hover {
+    background-color: #ffe4e1;
+  }
+
+  /* Lớp phủ nền mờ */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 99;
+  }
+  
+  /* Hiệu ứng phóng to popup */
+  .letter-popup {
+    animation: popupFadeIn 0.4s ease;
+  }
+  
+  /* Keyframes cho hiệu ứng */
+  @keyframes popupFadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  
+
+  
